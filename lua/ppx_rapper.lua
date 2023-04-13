@@ -8,7 +8,7 @@ local list = require("nvim-treesitter.parsers").get_parser_configs()
 list.rapper = {
   install_info = {
     url = "https://github.com/tjdevries/tree-sitter-rapper",
-    revision = "26b91c3c517a7a3a9f18c654eb63ebe23907261c",
+    revision = "99832d42ff758589050c707aea6d6db965240f86",
     files = { "src/parser.c" },
     branch = "main",
   },
@@ -25,5 +25,14 @@ return {
     if not is_installed "rapper" then
       print "[ppx_rapper] Please install rapper parser with `:TSUpdate rapper`"
     end
+
+    -- Put some default highlights to arguments
+    pcall(
+      vim.cmd,
+      [[
+        silent! hi link @rapper_argument @parameter
+        silent! hi link @rapper_return @type
+      ]]
+    )
   end,
 }

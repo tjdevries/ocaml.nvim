@@ -17,6 +17,13 @@ And then, you'll probably need to do this before you load nvim-treesitter
 requre('ppx_rapper').setup()
 ```
 
+You can customize the colors by doing something like:
+
+```vim
+hi! link @rapper_argument @parameter
+hi! link @rapper_return @type
+```
+
 ## Features
 
 Mostly just syntax highlighting for sql inside of `ppx_rapper`

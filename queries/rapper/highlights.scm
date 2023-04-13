@@ -1,7 +1,9 @@
 ; Mostly my overrides
 (identifier) @normal
-(rapper_ident) @normal
-(rapper_type) @type
+(rapper_argument type: (_) @rapper_argument ident: (_) @rapper)
+(rapper_return type: (_) @rapper_return ident: (_) @return)
+"{" @punctuation.bracket
+"}" @punctuation.bracket
 
 ; Mostly originals
 
