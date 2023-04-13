@@ -1,7 +1,7 @@
 ; Mostly my overrides
 (identifier) @normal
-(rapper_argument type: (_) @rapper_argument ident: (_) @rapper)
-(rapper_return type: (_) @rapper_return ident: (_) @return)
+(rapper_argument type: (_) @rapper_argument ident: (_) @variable)
+(rapper_return type: (_) @rapper_return ident: (_) @variable)
 "{" @punctuation.bracket
 "}" @punctuation.bracket
 
