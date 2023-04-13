@@ -10,6 +10,6 @@
        argument: (quoted_string (quoted_string_content) @injection.content)))))
 
  (#eq? @_attribute_id "rapper")
- (#eq? @_attribute_fn "get_opt")
+ (#contains? @_attribute_fn "execute" "get_one" "get_opt" "get_many")
  (#set! injection.language "rapper")
  (#set! injection.include-children true))
