@@ -44,3 +44,19 @@ You can customize the colors by doing something like:
 hi! link @rapper_argument @parameter
 hi! link @rapper_return @type
 ```
+
+- Automatically highlight code from `%graphql`:
+
+```ocaml
+module SomeGraphql = [%graphql
+  {| mutation deposit($account: String, $amount: UInt64) {
+    changeBalance(account: $account) {
+      payment {
+        id
+      }
+    }
+  } |}
+];
+```
+
+You just need to have `graphql` grammar installed.
