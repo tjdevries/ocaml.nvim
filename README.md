@@ -2,7 +2,7 @@
 
 Tools for working with OCaml.
 Status is very work in progress and likely to break.
-Use at your own risk.
+Use at your own risk (but feel free to file issues)
 
 Just some utilties for working with ppx_rapper.
 
