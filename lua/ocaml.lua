@@ -1,6 +1,12 @@
 if not pcall(require, "nvim-treesitter") then
-  print "treesitter is not installed"
-  return
+  vim.notify "[ocaml.nvim] you must install nvim-treesitter"
+
+  return {
+    setup = function() end,
+    update = function()
+      vim.notify "[ocaml.nvim] you must install nvim-treesitter"
+    end,
+  }
 end
 
 -- Adds rapper parser to the list of parsers
@@ -23,16 +29,14 @@ end
 return {
   setup = function()
     if not is_installed "rapper" then
-      print "[ppx_rapper] Please install rapper parser with `:TSUpdate rapper`"
+      vim.notify "[ocaml.nvim] Please install rapper parser with `:TSUpdate rapper`"
     end
 
-    -- Put some default highlights to arguments
-    pcall(
-      vim.cmd,
-      [[
-        silent! hi link @rapper_argument @parameter
-        silent! hi link @rapper_return @type
-      ]]
-    )
+    vim.api.nvim_set_hl(0, "@rapper_argument", { link = "@parameter", default = true })
+    vim.api.nvim_set_hl(0, "@rapper_return", { link = "@type", default = true })
+  end,
+
+  update = function()
+    vim.cmd [[TSUpdate rapper]]
   end,
 }
