@@ -60,3 +60,12 @@ module SomeGraphql = [%graphql
 ```
 
 You just need to have `graphql` grammar installed.
+
+## Feature: Easily update types in `.ml`/`.mli` files
+
+You can map a function to easily update the corresponding type in your `.ml` or `.mli` files, by doing:
+
+```lua
+-- Use <leader>out to update the type
+vim.keymap.set("n", "<leader>out", require('ocaml.actions').update_interface_type, { desc = "[O]caml [U]pdate [T]ype" })
+```
