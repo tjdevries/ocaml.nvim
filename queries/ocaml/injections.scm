@@ -24,6 +24,6 @@
      (quoted_string
       (quoted_string_content) @injection.content))))
 
- (#eq? @_attribute_id "graphql")
+ (#contains? @_attribute_id "graphql" "relay")
  (#set! injection.language "graphql")
  (#set! injection.include-children true))
