@@ -21,6 +21,17 @@ And then, you'll probably need to do this before you load nvim-treesitter
 requre('ocaml').setup()
 ```
 
+
+NOTE: you'll probably need to do this for your lspconfig (if you're using it)
+
+```lua
+  ocamllsp = {
+    get_language_id = function(_, ftype)
+      return ftype
+    end,
+  },
+```
+
 ## Feature: Highlighting
 
 
