@@ -32,13 +32,12 @@ return {
       vim.notify "[ocaml.nvim] Please install rapper parser with `:TSUpdate rapper`"
     end
 
-    vim.cmd [[TSUpdate ocaml ocaml_interface rapper]]
-
     vim.api.nvim_set_hl(0, "@rapper_argument", { link = "@parameter", default = true })
     vim.api.nvim_set_hl(0, "@rapper_return", { link = "@type", default = true })
   end,
 
   update = function()
-    vim.cmd [[TSUpdate ocaml ocaml_interface rapper]]
+    local update = require("nvim-treesitter.install").update {}
+    update("ocaml", "ocaml_interface", "rapper")
   end,
 }
