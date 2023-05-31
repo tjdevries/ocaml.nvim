@@ -18,7 +18,7 @@ And then, you'll probably need to do this before you load nvim-treesitter
 (if you want to use `ensure_installed`, but I do my best to make this not required)
 
 ```lua
-requre('ocaml').setup()
+require('ocaml').setup()
 ```
 
 
