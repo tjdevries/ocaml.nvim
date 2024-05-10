@@ -28,10 +28,6 @@ end
 
 return {
   setup = function()
-    if not is_installed "rapper" then
-      vim.notify "[ocaml.nvim] Please install rapper parser with `:TSUpdate rapper`"
-    end
-
     vim.api.nvim_set_hl(0, "@rapper_argument", { link = "@parameter", default = true })
     vim.api.nvim_set_hl(0, "@rapper_return", { link = "@type", default = true })
   end,
