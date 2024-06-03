@@ -1,5 +1,17 @@
 # ocaml.nvim
 
+# New Filetypes
+
+```
+.ml -> ocaml
+.mli -> ocaml.interface
+.mll -> ocaml.ocamllex
+.mly -> ocaml.menhir
+.t -> ocaml.cram
+```
+
+## Overview
+
 Tools for working with OCaml.
 Status is very work in progress and likely to break.
 Use at your own risk (but feel free to file issues)

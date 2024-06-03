@@ -1,9 +1,10 @@
--- Register `.mli` files as ocaml interface files
+-- Register various ocaml related syntax extensions
 vim.filetype.add {
   extension = {
     mli = "ocaml.interface",
     mly = "ocaml.menhir",
-    mll = "ocaml.lexer",
+    mll = "ocaml.ocamllex",
+    mlx = "ocaml",
     t = "ocaml.cram",
   },
 }
@@ -12,3 +13,5 @@ vim.filetype.add {
 vim.treesitter.language.register("ocaml_interface", "ocaml.interface")
 vim.treesitter.language.register("menhir", "ocaml.menhir")
 vim.treesitter.language.register("ocaml_interface", "ocaml.interface")
+vim.treesitter.language.register("cram", "ocaml.cram")
+vim.treesitter.language.register("ocamllex", "ocaml.ocamllex")
