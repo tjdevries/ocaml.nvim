@@ -4,8 +4,9 @@ vim.filetype.add {
     mli = "ocaml.interface",
     mly = "ocaml.menhir",
     mll = "ocaml.ocamllex",
-    mlx = "ocaml",
+    mlx = "ocaml.mlx",
     t = "ocaml.cram",
+    re = "reason",
   },
 }
 
@@ -15,3 +16,5 @@ vim.treesitter.language.register("menhir", "ocaml.menhir")
 vim.treesitter.language.register("ocaml_interface", "ocaml.interface")
 vim.treesitter.language.register("cram", "ocaml.cram")
 vim.treesitter.language.register("ocamllex", "ocaml.ocamllex")
+vim.treesitter.language.register("reason", "reason")
+vim.treesitter.language.register("ocaml_mlx", "ocaml.mlx")
