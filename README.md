@@ -1,5 +1,12 @@
 # ocaml.nvim
 
+This plugin requires the new dune:
+
+- Get it here: https://preview.dune.build/
+- Or shortcut: `curl -fsSL https://get.dune.build/install | sh`
+
+You also need to run `make` for the plugin on installation
+
 # New Filetypes
 
 ```
@@ -22,27 +29,21 @@ If you're not using OCaml (you should be) then this plugin is worthless to you.
 
 ## Installation
 
-```vim
-Plug 'tjdevries/ocaml.nvim', {'do': ':lua require("ocaml").update()'}
+```lua
+return {
+    { "tjdevries/ocaml.nvim", build = "make" }
+}
 ```
-
-And then, you'll probably need to do this before you load nvim-treesitter
-(if you want to use `ensure_installed`, but I do my best to make this not required)
 
 ```lua
 require('ocaml').setup()
 ```
 
+# Features
 
-NOTE: you'll probably need to do this for your lspconfig (if you're using it)
-
-```lua
-  ocamllsp = {
-    get_language_id = function(_, ftype)
-      return ftype
-    end,
-  },
-```
+- Configures nvim lsp
+- Configures mlx
+- Configures conform
 
 ## Feature: Highlighting
 

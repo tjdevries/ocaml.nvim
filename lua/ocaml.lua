@@ -40,6 +40,26 @@ local install_mlx = function()
     },
     filetype = "ocaml_mlx",
   }
+
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "TSUpdate",
+    callback = function()
+      local parsers = require "nvim-treesitter.parsers"
+      parsers.ocaml_mlx = {
+        tier = 0,
+
+        install_info = {
+          location = "grammars/mlx",
+          url = "https://github.com/ocaml-mlx/tree-sitter-mlx",
+          files = { "src/parser.c", "src/scanner.c" },
+          branch = "master",
+        },
+        filetype = "ocaml_mlx",
+      }
+    end,
+  })
+
+  -- vim.cmd.TSInstall "ocaml_mlx"
 end
 
 -- Adds rapper parser to the list of parsers
@@ -69,49 +89,14 @@ local setup = function(opts)
     install_mlx()
   end
 
-  if opts.setup_lspconfig then
-    local lspconfig = require "lspconfig"
-    lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function(config)
-      if config.name == "ocamllsp" then
-        local filetypes = vim.deepcopy(config.filetypes)
-        local get_language_id = config.get_language_id
-
-        local ensure_filetypes = {
-          "ocaml",
-          "ocaml.interface",
-          "ocaml.menhir",
-          "ocaml.cram",
-          "ocaml.mlx",
-          "ocaml.ocamllex",
-          "reason",
-        }
-
-        for _, ft in ipairs(ensure_filetypes) do
-          if not vim.tbl_contains(filetypes, ft) then
-            table.insert(filetypes, ft)
-          end
-        end
-
-        config.cmd = { "dune", "exec", "ocamllsp" }
-        config.filetypes = filetypes
-        config.get_language_id = function(bufnr, ft)
-          if ft == "ocaml.mlx" then
-            return "ocaml"
-          else
-            return get_language_id(bufnr, ft)
-          end
-        end
-      end
-    end)
-  end
-
   if opts.setup_conform then
     local conform = require "conform"
-    conform.formatters_by_ft.mlx = { "stylua" }
+    conform.formatters_by_ft.mlx = { "ocamlformat_mlx" }
+    conform.formatters_by_ft["ocaml.mlx"] = { "ocamlformat_mlx" }
     conform.formatters.ocamlformat_mlx = {
       inherit = false,
       command = "ocamlformat-mlx",
-      args = { "--name", "$FILENAME", "--impl", "-" },
+      args = { "--enable-outside-detected-project", "--name", "$FILENAME", "--impl", "-" },
       stdin = true,
     }
   end

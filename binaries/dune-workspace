@@ -1,0 +1,8 @@
+(lang dune 3.17)
+
+(lock_dir
+ (repositories overlay andrey))
+
+(repository
+ (name andrey)
+ (source "git+https://github.com/andreypopp/opam-repository-1.git#7617b0899497eaa0447bbc19b15467c7237aa290"))

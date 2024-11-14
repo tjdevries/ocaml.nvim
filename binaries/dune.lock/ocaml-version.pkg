@@ -1,0 +1,16 @@
+(version 3.7.0)
+
+(build
+ (progn
+  (when
+   %{pkg-self:dev}
+   (run dune subst))
+  (run dune build -p %{pkg-self:name} -j %{jobs} @install)))
+
+(depends dune ocaml)
+
+(source
+ (fetch
+  (url
+   https://github.com/ocurrent/ocaml-version/releases/download/v3.7.0/ocaml-version-3.7.0.tbz)
+  (checksum md5=73e5e6e3ccac96a82712c47e8003e327)))

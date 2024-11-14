@@ -1,0 +1,16 @@
+(version 0.26.2.0)
+
+(build
+ (progn
+  (when
+   %{pkg-self:dev}
+   (run dune subst))
+  (run dune build -p %{pkg-self:name} -j %{jobs} @install)))
+
+(depends ocaml cmdliner dune ocamlformat-mlx-lib re)
+
+(source
+ (fetch
+  (url
+   https://github.com/andreypopp/ocamlformat-mlx/archive/refs/tags/0.26.2.0.tar.gz)
+  (checksum md5=4b32d3b57da54157a0cd8f772094f4bc)))

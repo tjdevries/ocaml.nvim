@@ -1,0 +1,30 @@
+(version 0.9)
+
+(build
+ (progn
+  (when
+   %{pkg-self:dev}
+   (run dune subst))
+  (run
+   dune
+   build
+   -p
+   %{pkg-self:name}
+   -j
+   %{jobs}
+   --promote-install-files=false
+   @install)
+  (run
+   dune
+   install
+   -p
+   %{pkg-self:name}
+   --create-install-files
+   %{pkg-self:name})))
+
+(depends ocaml ppxlib dune)
+
+(source
+ (fetch
+  (url https://github.com/ocaml-mlx/mlx/archive/refs/tags/0.9.tar.gz)
+  (checksum md5=c413c013d6c3a905e9b77cc2f65413cf)))
