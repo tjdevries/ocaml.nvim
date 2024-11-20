@@ -31,7 +31,13 @@ If you're not using OCaml (you should be) then this plugin is worthless to you.
 
 ```lua
 return {
-    { "tjdevries/ocaml.nvim", build = "make" }
+    {
+        "tjdevries/ocaml.nvim",
+        dependencies = {
+            "stevearc/conform.nvim",
+        },
+        build = "make"
+    },
 }
 ```
 
